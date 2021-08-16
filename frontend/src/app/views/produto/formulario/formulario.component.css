@@ -1,0 +1,13 @@
+
+.titulo{
+  font-weight: bold;
+  font-size: xx-large;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  
+  color: tomato;
+}
+
+.cabecalho{
+  margin-bottom: 10px;
+}

@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+    <p-fieldset>
+        <p-header class="cabecalho">{{tituloModal}}</p-header>
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label p-input-icon-left">
+                    <i class="pi pi-user"></i>
+                    <input type="text" pInputText name="Nome" [(ngModel)]="usuario.nome" formControlName="nome">
+                    <label for="inputnumber">Nome</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label p-input-icon-left">
+                    <i class="pi pi-envelope"></i>
+                    <input pInputText [(ngModel)]="usuario.email" name="email" formControlName="email">
+                    <label for="inputnumber">Email</label>
+                </span>
+            </div>
+        </div>
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label p-input-icon-left">
+                    <i class="pi pi-lock"></i>
+                    <input type="password" pInputText [(ngModel)]="usuario.senha" name="senha" formControlName="senha">
+                    <label for="inputnumber">Senha</label>
+                </span>
+            </div>
+        </div>
+        <        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label p-input-icon-left">
+                    <i class="pi pi-lock"></i>
+                    <input type="password" pInputText formControlName="confirmacao">
+                    <label for="inputnumber">Confirmar senha</label>
+                </span>
+            </div>
+        </div>
+        <div class="small">
+            <small [hidden]="confirmacaoSenha()">Senhas não coincidem</small>
+        </div>
+        <div class="p-grid p-mt-5">
+            <div class="p-col p-sm-12 alinhamento">
+                <button pButton class="p-button-danger botao-cancelar" label="Cancelar" (click)="fecharModal()">
+                    <i class="pi pi-times"></i>
+                </button>
+                <button pButton class="p-button-success botao-salvar" label="Salvar" (click)="salvar()">
+                    <i class="pi pi-save"></i>
+                </button>
+            </div>
+        </div>
+    </p-fieldset>
+</form>

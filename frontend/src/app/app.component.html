@@ -1,0 +1,41 @@
+<div class="layout-wrapper" [ngClass]="{'p-input-filled': config.inputStyle === 'filled', 'p-ripple-disabled': !config.ripple,
+        'layout-menu-static': menuService.isStatic(),
+        'layout-menu-overlay': menuService.isOverlay(),
+        'layout-menu-horizontal': menuService.isHorizontal(),
+        'layout-menu-slim': menuService.isSlim(),
+        'layout-menu-active': menuActive,
+        'layout-menu-mobile-active': mobileMenuActive,
+        'layout-topbar-mobile-active': mobileTopbarActive,
+        'layout-rtl': config.isRTL}"
+    [class]="'layout-menu-' + config.menuTheme + ' layout-topbar-' + config.topbarTheme">
+    <div *ngIf="usuarioLogado">
+        <app-topbar></app-topbar>
+    </div>
+    <div *ngIf="usuarioLogado">
+        <div class="menu-wrapper" (click)="onMenuClick($event)">
+            <div class="layout-menu-container">
+                <app-menu></app-menu>
+            </div>
+        </div>
+    </div>
+
+        <div class="layout-main">
+            <div *ngIf="usuarioLogado">
+            <breadcrumb></breadcrumb>
+            </div>
+
+            <div class="layout-content">
+                <div *ngIf="usuarioLogado">
+                    <router-outlet [user]="usuarioLogado"></router-outlet>
+                </div>
+                <div *ngIf="!usuarioLogado">
+                    <app-login (emitUsuario)="logarUsuario($event)"></app-login>
+                </div>
+            </div>
+
+            <app-footer></app-footer>
+        </div>
+
+        <basis-page-notification></basis-page-notification>
+        <div class="layout-mask"></div>
+    </div>

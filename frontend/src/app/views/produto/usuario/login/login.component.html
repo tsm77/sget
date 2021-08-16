@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="formLogin">
+        <p-header>Entrar</p-header>
+
+        <div class="p-fluid p-grid p-mb-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label p-input-icon-left">
+                    <i class="pi pi-envelope"></i>
+
+                    <input pInputText id="login" [(ngModel)]="login.username" name="username"
+                        formControlName="username">
+                    <label for="inputnumber">Nome</label>
+                </span>
+            </div>
+        </div>
+        <div class="p-fluid p-grid p-mb-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label p-input-icon-left">
+                    <i class="pi pi-lock"></i>
+                    <input type="password" id="senha" pInputText [(ngModel)]="login.senha" name="senha"
+                        formControlName="senha">
+                    <label for="inputnumber">Senha</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-grid p-mt-5 p-jc-center">
+            <div class="p-col p-sm-12 alinhamento">
+                <button pButton class="p-button-success botao-salvar p-jc-center p-col-12 p-sm-12" label="Entrar" (click)="doLogin()">
+                    <i class="pi pi-save"></i>
+                </button>
+            </div>
+            <label class="p-mt-2 p-ml-6">Não tem uma conta?</label>
+            <button pButton class="p-button-link" label="Cadastre-se" (click)="abrirModal()">
+
+            </button>
+        </div>
+    </form>
+</div>

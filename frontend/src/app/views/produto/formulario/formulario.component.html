@@ -1,0 +1,47 @@
+<form [formGroup]="form" (submit)="salvar()">
+    <p-fieldset > 
+    <p-header class="cabecalho">{{tituloModal}}</p-header>
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label">
+                <input type="text" pInputText name="Nome"  [(ngModel)]="produtos.nome" formControlName="nome">
+                <label for="inputnumber">Nome</label>
+            </span>
+            </div>
+        </div>
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label">
+                <input  pInputText [(ngModel)]="produtos.preco" name="Preco" formControlName="preco">
+                <label for="inputnumber">Preço</label>
+            </span>
+            </div>
+        </div>
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="produtos.quantidade" name="Quantidade" formControlName="quantidade">
+                <label for="inputnumber">Quantidade</label>
+            </span>
+            </div>
+        </div>
+        <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
+            <div class="p-md-8 p-sm-12">
+                <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="produtos.descricao" name="Descricao" formControlName="descricao">
+                <label for="inputnumber">Descricao</label>
+            </span>
+            </div>
+        </div>
+        <div class="p-grid p-mt-5  p-d-flex p-jc-center">
+            <div class="p-col p-sm-12 alinhamento">
+                <button pButton class="p-button-danger botao-cancelar" label="Cancelar" (click)="fecharModal()">
+                    <i class="pi pi-times"></i>
+                </button>
+                <button pButton class="p-button-success botao-salvar" label="Salvar" type="submit">
+                    <i class="pi pi-save"></i>
+                </button>
+            </div>
+        </div>
+    </p-fieldset>
+</form>

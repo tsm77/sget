@@ -1,0 +1,13 @@
+.small{
+    color: red;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+.label-input{
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    border-radius: 10px;
+}
+

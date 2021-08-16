@@ -1,0 +1,50 @@
+.acoes{
+width: 120px;
+}
+.edit{
+    margin-right: 7px;
+}
+.edit > i{
+    cursor: pointer;
+    color: #D9CD26;
+}
+.delete > i{
+    color: red;
+    cursor: pointer;
+    margin-left: 8px;
+  
+}
+.visualizar > i{
+ cursor: pointer;
+  color: blueviolet;
+}
+.visualizar :hover{
+    color: blue;
+}
+
+.edit :hover{
+    color: blue;
+}
+
+.delete :hover{
+ color: blue;
+}
+.container{
+   font-weight: bold;
+   font-size: 20px;
+   color: tomato;
+   text-align: center;
+}
+.id{
+    margin-bottom: 10px;
+    
+}
+.nome{
+    margin-bottom: 10px;
+}
+.preco{
+    margin-bottom: 10px;
+}
+.descricao{
+    margin-bottom: 10px;
+}

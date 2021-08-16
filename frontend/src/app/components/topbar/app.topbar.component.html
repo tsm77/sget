@@ -1,0 +1,46 @@
+<div class="layout-topbar p-shadow-4">
+    <div class="layout-topbar-left">
+        <a class="layout-topbar-logo" routerLink="/">
+            <img id="app-logo" src="assets/layout/images/logo-light.svg" alt="ultima-layout" style="height: 2.25rem">
+        </a>
+
+        <a class="layout-menu-button p-shadow-6" (click)="app.onMenuButtonClick($event)" pRipple>
+            <i class="pi pi-chevron-right"></i>
+        </a>
+
+        <a class="layout-topbar-mobile-button" (click)="app.onTopbarMobileButtonClick($event)" pRipple>
+            <i class="pi pi-ellipsis-v fs-large"></i>
+        </a>
+    </div>
+
+    <div class="layout-topbar-right" [ngClass]="{'layout-topbar-mobile-active': app.mobileTopbarActive}">
+        <div class="layout-topbar-actions-left">
+            <p-megaMenu [model]="model" styleClass="layout-megamenu"></p-megaMenu>
+        </div>
+        <div class="layout-topbar-actions-right">
+            <ul class="layout-topbar-items">
+
+                <li class="layout-topbar-item">
+                    <a class="layout-topbar-action p-d-flex p-dir-row p-jc-center p-ai-center p-px-2 rounded-circle" (click)="app.onTopbarItemClick($event, 'profile')" pRipple>
+                        <i class="pi pi-cog" [ngClass]="{'p-mr-2': !app.config.isRTL, 'p-ml-2': app.config.isRTL}"></i>
+                    </a>
+                    <ul class="layout-topbar-action-panel p-shadow-6" [@topbarActionPanelAnimation]="'visible'" *ngIf="app.activeTopbarItem === 'profile'">
+                        <li class="layout-topbar-action-item">
+                            <a routerLink="/error-stack" class="p-d-flex p-flex-row p-ai-center" pRipple>
+                                <i class="pi pi-cog" [ngClass]="{'p-mr-2': !app.config.isRTL, 'p-ml-2': app.config.isRTL}"></i>
+                                <span>&nbsp; Diário de Erros</span>
+                            </a>
+                        </li>
+                        <li class="layout-topbar-action-item">
+                            <a class="p-d-flex p-flex-row p-ai-center" pRipple (click)="logout()">
+                                <i class="pi pi-power-off" [ngClass]="{'p-mr-2': !app.config.isRTL, 'p-ml-2': app.config.isRTL}"></i>
+                                <span>&nbsp; Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
