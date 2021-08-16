@@ -2,8 +2,7 @@ import { Component, AfterViewInit, ElementRef, Renderer2, ViewChild, OnInit, NgZ
 import { ScrollPanel } from 'primeng/scrollpanel';
 import { MenusService } from '@nuvem/primeng-components';
 import { PrimeNGConfig } from 'primeng/api';
-import { Login } from './views/produto/usuario/models/login';
-import { Usuario } from './views/produto/usuario/models/usuario';
+import { Login } from './views/usuario/models/login';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'

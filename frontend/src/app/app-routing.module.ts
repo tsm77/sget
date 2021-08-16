@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ErrorStackComponent } from '@nuvem/primeng-components';
 import { LoginSuccessComponent } from '@nuvem/angular-base';
 import { ProdutoModule } from './views/produto/produto.module';
-import { UsuarioModule } from './views/produto/usuario/usuario.module';
+import { UsuarioModule } from './views/usuario/usuario.module';
 
 const routes: Routes = [
     { path: 'error-stack', component: ErrorStackComponent, data: { breadcrumb: 'Diário de Erros'} },

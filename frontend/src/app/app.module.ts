@@ -16,8 +16,8 @@ import { MensagensUtil } from './shared/util/mensagens.util';
 import { BlockUIModule } from 'ng-block-ui';
 import { AuthInterceptor } from './components/auth/interceptor';
 import { TableModule } from 'primeng/table';
-import { UsuarioModule } from './views/produto/usuario/usuario.module';
 import { FieldsetModule } from 'primeng/fieldset';
+import { UsuarioModule } from './views/usuario/usuario.module';
 
 @NgModule({
     declarations: [
