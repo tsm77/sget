@@ -19,23 +19,23 @@
         </div>
     </div>
 
-        <div class="layout-main">
-            <div *ngIf="usuarioLogado">
+    <div class="layout-main">
+        <div *ngIf="usuarioLogado">
             <breadcrumb></breadcrumb>
-            </div>
-
-            <div class="layout-content">
-                <div *ngIf="usuarioLogado">
-                    <router-outlet [user]="usuarioLogado"></router-outlet>
-                </div>
-                <div *ngIf="!usuarioLogado">
-                    <app-login (emitUsuario)="logarUsuario($event)"></app-login>
-                </div>
-            </div>
-
-            <app-footer></app-footer>
         </div>
 
-        <basis-page-notification></basis-page-notification>
-        <div class="layout-mask"></div>
+        <div class="layout-content">
+            <div *ngIf="usuarioLogado">
+                <router-outlet [user]="usuarioLogado"></router-outlet>
+            </div>
+            <div *ngIf="!usuarioLogado">
+                <app-login (emitUsuario)="logarUsuario($event)"></app-login>
+            </div>
+        </div>
+
+        <app-footer></app-footer>
     </div>
+
+    <basis-page-notification></basis-page-notification>
+    <div class="layout-mask"></div>
+</div>

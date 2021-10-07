@@ -10,7 +10,8 @@ export class MensagensUtil {
 
     public static SUCESSO = 'Operação realizada com sucesso.';
 
-    public static CONFIRMAR_EXCLUSAO_REFERENCIA = 'Deseja realmente excluir o produto ?';
+    public static CONFIRMAR_EXCLUSAO_PRODUTO = 'Deseja realmente excluir o produto ?';
+    public static CONFIRMAR_EXCLUSAO_USUARIO = 'Deseja realmente excluir esse usuario?';
 
 
 }

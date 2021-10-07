@@ -1,7 +1,8 @@
 <div class="container">
     <form [formGroup]="formLogin">
-        <p-header>Entrar</p-header>
-
+        <a class="p-fluid p-grid p-md-12 p-mb-6 p-d-flex p-jc-center">
+            <img id="app-logo" src="assets/layout/images/sgr1.png" alt="ultima-layout" style="height: 3.25rem">
+        </a>
         <div class="p-fluid p-grid p-mb-3 p-d-flex p-jc-center">
             <div class="p-md-8 p-sm-12">
                 <span class="p-float-label p-input-icon-left">
@@ -24,14 +25,14 @@
             </div>
         </div>
 
-        <div class="p-grid p-mt-5 p-jc-center">
-            <div class="p-col p-sm-12 alinhamento">
-                <button pButton class="p-button-success botao-salvar p-jc-center p-col-12 p-sm-12" label="Entrar" (click)="doLogin()">
-                    <i class="pi pi-save"></i>
+        <div class="p-grid p-mt-5 demo-container p-p-4">
+            <div class="p-col p-md-12 p-sm-12">
+                <button pButton class="botao-login p-d-block p-mx-auto" label="Entrar" (click)="doLogin()">
+                    <i class="pi pi-save p-mr-1"></i>
                 </button>
             </div>
-            <label class="p-mt-2 p-ml-6">Não tem uma conta?</label>
-            <button pButton class="p-button-link" label="Cadastre-se" (click)="abrirModal()">
+            <label class="p-mt-2 p-col-12 p-d-block p-mx-auto">Não tem uma conta?</label>
+            <button pButton class="p-button-link p-col-12" label="Cadastre-se" (click)="abrirModal()">
 
             </button>
         </div>

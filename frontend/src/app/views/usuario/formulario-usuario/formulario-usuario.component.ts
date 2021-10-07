@@ -5,6 +5,7 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { finalize } from 'rxjs/operators';
+import { Acao, AcaoEnumMapper } from 'src/app/shared/util/acao';
 import { AlertaService } from 'src/app/shared/util/alerta.service';
 import { MensagemValidacaoUtil } from 'src/app/shared/util/mensagem-validacao.util';
 import { MensagensUtil } from 'src/app/shared/util/mensagens.util';
@@ -23,6 +24,7 @@ export class FormularioUsuarioComponent implements OnInit {
   usuario = new Usuario();
   form: FormGroup;
   formLogin: FormGroup;
+  acao: Acao;
   idUsuario: number;
   tituloModal = 'Cadastrar Usuario';
   constructor(private fb: FormBuilder,
@@ -32,13 +34,15 @@ export class FormularioUsuarioComponent implements OnInit {
     private alertaService: AlertaService,
     private ddr: DynamicDialogRef) {
     if (config.data) {
-      this.obterProdutoPorId();
+      this.idUsuario = config.data;
       this.tituloModal = 'Editar Usuario';
+      this.obterProdutoPorId();
     }
   }
 
   ngOnInit(): void {
     this.iniciarForm();
+    this.desabilitarFormulario();
   }
 
   obterProdutoPorId(): void {
@@ -51,6 +55,7 @@ export class FormularioUsuarioComponent implements OnInit {
   }
 
   private iniciarForm() {
+    this.usuario.admin = false;
     this.form = this.fb.group({
       nome: ['', [Validators.required]],
       email: ['', [Validators.required]],
@@ -85,13 +90,23 @@ export class FormularioUsuarioComponent implements OnInit {
           this.alertaService.erro(msg);
         });
   }
-  
+
   salvar() {
     MensagemValidacaoUtil.validarTodosCamposDoForm(this.form);
     if (this.form.valid && this.confirmacaoSenha()) {
       this.salvarUsuario();
     }
   }
+
+  desabilitarFormulario(): void {
+    if (this.ehVisualizar()) {
+        this.form.disable();
+    }
+}
+
+ehVisualizar(): boolean {
+  return Acao.VISUALIZAR === this.acao;
+}
 
   reloadPage() {
     window.location.reload();

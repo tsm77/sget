@@ -3,9 +3,9 @@ package com.digitailinnovationone.springboot.recurso;
 import com.digitailinnovationone.springboot.servico.ProdutoServico;
 import com.digitailinnovationone.springboot.servico.dto.ProdutoDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +21,12 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
+@Configuration
 @RequestMapping("/api/produtos")
 @RequiredArgsConstructor
+@Slf4j
 public class ProdutoRecurso {
-    @Autowired
+
     private final ProdutoServico produtoServico;
 
     @GetMapping
@@ -33,7 +35,7 @@ public class ProdutoRecurso {
         return ResponseEntity.ok(list);
     }
     @GetMapping ("/{id}")
-    public ResponseEntity<ProdutoDTO> buscar(@PathVariable Integer id){
+    public ResponseEntity<ProdutoDTO> buscar(@PathVariable Long id){
         ProdutoDTO produtoDTO = produtoServico.obterPorId(id);
         return ResponseEntity.ok(produtoDTO);
 
@@ -53,8 +55,7 @@ public class ProdutoRecurso {
     }
 
     @DeleteMapping ("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public void deletar(@PathVariable Integer id){
+    public void deletar(@PathVariable Long id){
         produtoServico.remover(id);
     }
 }

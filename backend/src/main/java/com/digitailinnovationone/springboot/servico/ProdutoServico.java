@@ -24,7 +24,7 @@ public class ProdutoServico {
         List<Produto> usuarios = produtoRepositorio.findAll();
         return produtoMapper.toDto(usuarios);
     }
-    public ProdutoDTO obterPorId(Integer id){
+    public ProdutoDTO obterPorId(Long id){
         Produto produto = produtoRepositorio.findById(id).orElseThrow(()
                 -> new RegraNegocioException("ID nao encontrado"));
         return produtoMapper.toDto(produto);
@@ -45,7 +45,7 @@ public class ProdutoServico {
 
     }
 
-    public void remover(Integer id){
+    public void remover(Long id){
       produtoRepositorio.findById(id).orElseThrow(()-> new RegraNegocioException("Produto nao encontrado"));
         produtoRepositorio.deleteById(id);
     }

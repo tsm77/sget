@@ -23,11 +23,9 @@
             <constraints nullable="false"/>
         </column>
 
-        <column name="permissao_usuario" type="VARCHAR(10)" remarks="Enum de permissão de USUARIO e ADMIN ">
-            <constraints nullable="true"/>
+        <column name="admin" type="Boolean">
+            <constraints nullable="false"/>
         </column>
-
-
     </createTable>
 
     <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="2"/>
@@ -38,12 +36,11 @@
 
     <changeSet id="2" author="tiago.martins">
         <insert tableName="usuario">
-            <column name="id" >1</column>
-            <column name="nome" >Admin</column>
-            <column name="senha">Admin</column>
-            <column name="email">Admin</column>
-            <column name="permissao_usuario">ADMIN</column>
+            <column name="id">1</column>
+            <column name="nome" >admin</column>
+            <column name="senha">admin</column>
+            <column name="email">admin@gmail.com</column>
+            <column name="admin">1</column>
         </insert>
     </changeSet>
-
 </databaseChangeLog>

@@ -1,44 +1,53 @@
-<form [formGroup]="form" (submit)="salvar()">
-    <p-fieldset > 
-    <p-header class="cabecalho">{{tituloModal}}</p-header>
+<form [formGroup]="form">
+    <p-fieldset>
+        <p-header class="cabecalho">{{tituloModal}}</p-header>
+        <div class="logo">
+            <a class="p-fluid p-grid p-md-12 p-mb-6 p-d-flex p-jc-center">
+                <img id="app-logo" src="assets/layout/images/sgr1.png" alt="ultima-layout" style="height: 4.25rem">
+            </a>
+        </div>
         <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
             <div class="p-md-8 p-sm-12">
                 <span class="p-float-label">
-                <input type="text" pInputText name="Nome"  [(ngModel)]="produtos.nome" formControlName="nome">
-                <label for="inputnumber">Nome</label>
-            </span>
+                    <input type="text" pInputText name="Nome" [(ngModel)]="produtos.nome" #nome formControlName="nome" [readonly]="ehDetalhar">
+                    <label for="inputnumber">Nome</label>
+                </span>
             </div>
         </div>
         <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
             <div class="p-md-8 p-sm-12">
                 <span class="p-float-label">
-                <input  pInputText [(ngModel)]="produtos.preco" name="Preco" formControlName="preco">
-                <label for="inputnumber">Preço</label>
-            </span>
+                    <p-inputNumber  [(ngModel)]="produtos.preco"  mode="currency" currency="BRL" locale="pt-BR" name="Preco" formControlName="preco"></p-inputNumber>
+                    <label for="inputnumber">Preço</label>
+                </span>
             </div>
         </div>
         <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
             <div class="p-md-8 p-sm-12">
                 <span class="p-float-label">
-                <input type="text" pInputText [(ngModel)]="produtos.quantidade" name="Quantidade" formControlName="quantidade">
-                <label for="inputnumber">Quantidade</label>
-            </span>
+                    <input type="number" pInputText [(ngModel)]="produtos.quantidade" name="Quantidade"
+                        formControlName="quantidade" mask="R$00,000.00" [readonly]="ehDetalhar">
+                    <label for="inputnumber">Quantidade</label>
+                </span>
             </div>
         </div>
         <div class="p-fluid p-grid p-mt-3 p-d-flex p-jc-center">
-            <div class="p-md-8 p-sm-12">
+            <div class="p-md-8 p-sm-8">
                 <span class="p-float-label">
-                <input type="text" pInputText [(ngModel)]="produtos.descricao" name="Descricao" formControlName="descricao">
-                <label for="inputnumber">Descricao</label>
-            </span>
+                    <textarea [rows]="5" [cols]="22" pInputTextarea  [readonly]="ehDetalhar" [(ngModel)]="produtos.descricao" name="Descricao"
+                        formControlName="descricao"></textarea>
+                    <label for="inputnumber">Descricao</label>
+                </span>
             </div>
         </div>
-        <div class="p-grid p-mt-5  p-d-flex p-jc-center">
-            <div class="p-col p-sm-12 alinhamento">
-                <button pButton class="p-button-danger botao-cancelar" label="Cancelar" (click)="fecharModal()">
+        <div class="p-grid p-sm-12 p-jc-center p-mt-2">
+            <div class="p-col-12 p-md-4 p-sm-12">
+                <button pButton class="botao-cancelar" label="Cancelar" (click)="fecharModal()" title="Cancelar Operação" type="button">
                     <i class="pi pi-times"></i>
                 </button>
-                <button pButton class="p-button-success botao-salvar" label="Salvar" type="submit">
+            </div>
+            <div class="p-col-12 p-md-4 p-sm-12">
+                <button pButton class="botao-salvar p-ml-auto" label="Salvar" *ngIf="!ehDetalhar" (click)="salvar()" title="Salvar Produto">
                     <i class="pi pi-save"></i>
                 </button>
             </div>

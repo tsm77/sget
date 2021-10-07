@@ -13,7 +13,7 @@ export class ModalService {
    */
   modalComponente(componente: any, dimensoes?: { altura: string; largura: string; }, obj?: Object): DynamicDialogRef {
     return this.dialogService.open(componente, {
-      width: dimensoes ? dimensoes.largura : '55%' ,
+      width: dimensoes ? dimensoes.largura : '85%' ,
       height: dimensoes ? dimensoes.altura : 'auto',
       baseZIndex: 10000,
       showHeader: false,

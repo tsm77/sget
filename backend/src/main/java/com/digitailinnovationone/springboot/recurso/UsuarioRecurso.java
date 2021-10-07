@@ -10,7 +10,6 @@ import com.digitailinnovationone.springboot.servico.dto.UsuarioDTO;
 import com.digitailinnovationone.springboot.servico.request.LoginRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -53,11 +52,10 @@ public class UsuarioRecurso {
 
         UserDetailsImp userDetails = (UserDetailsImp) authentication.getPrincipal();
 
-
-
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getNome(),
-                userDetails.getEmail()));
+                userDetails.getEmail(),
+                userDetails.getAdmin()));
     }
 
     @GetMapping
@@ -86,7 +84,6 @@ public class UsuarioRecurso {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public void deletar(@PathVariable Long id){
         servico.remover(id);
     }

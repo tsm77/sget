@@ -4,10 +4,6 @@ export const environment = {
     appVersion: version,
     production: true,
     apiUrl: '/api',
-    apoioUrl: '/apoio/api',
-    comunicacaoUrl: '/comunicacao/api',
-    experienciaUrl: '/experiencia/api',
-    relatoriosUrl: 'relatorios/api',
     auth: {
         baseUrl: '',
         authUrl: '/login/cas',

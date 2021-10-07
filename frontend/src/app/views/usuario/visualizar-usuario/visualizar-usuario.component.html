@@ -1,0 +1,41 @@
+<p-fieldset>
+    <p-header class="cabecalho">Detalhar Usuario</p-header>
+    <div class="logo">
+        <a class="p-fluid p-grid p-md-12 p-mb-4 p-d-flex p-jc-center">
+            <img id="app-logo" src="assets/layout/images/sgr1.png" alt="ultima-layout" style="height: 4.25rem">
+        </a>
+    </div>
+    <div>
+        <div class="ajuste">
+            <label class="negrito p-mr-2 p-d-inline">Nome:</label>
+            <div class="p-mr-2 p-d-inline">
+                <span>{{usuario.nome}}</span>
+            </div>
+        </div>
+
+        <div class="ajuste">
+
+            <label class="negrito  p-mr-2 p-d-inline">Email:</label>
+            <div class="p-mr-2 p-d-inline">
+                <span>{{usuario.email}}</span>
+            </div>
+        </div>
+
+
+        <div class="ajuste">
+
+            <label class="negrito  p-mr-2 p-d-inline">ADMIN:</label>
+            <div class="p-mr-2 p-d-inline">
+                <span>{{usuario.admin}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid p-mt-2">
+        <div class="p-col-12 p-md-2 p-sm-12">
+            <button pButton class="botao-cancelar" label="Cancelar" (click)="fecharModal()" title="Cancelar"
+                type="button">
+                <i class="pi pi-times"></i>
+            </button>
+        </div>
+    </div>
+</p-fieldset>

@@ -23,6 +23,8 @@ public class UserDetailsImp implements UserDetails {
 
     private String email;
 
+    private Boolean admin;
+
     @JsonIgnore
     private String password;
 
@@ -31,6 +33,8 @@ public class UserDetailsImp implements UserDetails {
     public String getNome() {
         return this.username;
     }
+
+    public Boolean getAdmin() {return this.admin;}
 
     @Override
     public String getUsername() {

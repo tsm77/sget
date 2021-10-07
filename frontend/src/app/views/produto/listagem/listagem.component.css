@@ -48,3 +48,7 @@ width: 120px;
 .descricao{
     margin-bottom: 10px;
 }
+
+.width10px{
+    width: 10px !important;
+}

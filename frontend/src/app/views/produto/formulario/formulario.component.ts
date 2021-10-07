@@ -22,10 +22,11 @@ import { MensagemValidacaoUtil } from 'src/app/shared/util/mensagem-validacao.ut
 export class FormularioComponent implements OnInit {
   
   @BlockUI() blockUI: NgBlockUI;
-  produtos = new Produto();
+  @Input() produtos: Produto =  new Produto();
   tituloModal = 'Cadastrar Produto';
-  idProdutos: number;
+  idProduto: number;
   form: FormGroup;
+  @Input() ehDetalhar: boolean;
 
   constructor(public messageService: MessageService,
     private produtoService: ProdutosService,
@@ -37,8 +38,8 @@ export class FormularioComponent implements OnInit {
     private alertaService: AlertaService,
   ) {
     if (config.data) {
-      this.idProdutos = config.data;
-      this.tituloModal = 'Editar Produto';
+      this.idProduto = config.data;
+      this.tituloModal = 'Produto';
       this.obterProdutoPorId();
     }
   }
@@ -46,6 +47,7 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.iniciarForm();
+
 
   }
   private iniciarForm() {
@@ -60,7 +62,7 @@ export class FormularioComponent implements OnInit {
 
   obterProdutoPorId(): void {
     this.blockUI.start(MensagensUtil.BLOCKUI_CARREGANDO);
-    this.produtoService.obterPorId(this.idProdutos)
+    this.produtoService.obterPorId(this.idProduto)
       .pipe(finalize(() => this.blockUI.stop())).subscribe(ref => {
         this.produtos = ref;
 
@@ -96,6 +98,7 @@ export class FormularioComponent implements OnInit {
   fecharModal(value?: any): void {
     this.ddr.close(value);
   }
+  
   mapearMensagemErroCampo(campo: string, campoControl: AbstractControl): string {
     return MensagemValidacaoUtil.construirMensagem(campo, campoControl);
 }

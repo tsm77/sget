@@ -3,12 +3,15 @@ import { ScrollPanel } from 'primeng/scrollpanel';
 import { MenusService } from '@nuvem/primeng-components';
 import { PrimeNGConfig } from 'primeng/api';
 import { Login } from './views/usuario/models/login';
+import { Usuario } from './views/usuario/models/usuario';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
 })
 export class AppComponent implements AfterViewInit, OnInit {
     usuarioLogado : Login;
+
+    admin: Usuario;
 
     config = {
         topbarTheme: 'green',
@@ -74,10 +77,10 @@ export class AppComponent implements AfterViewInit, OnInit {
                 label: 'Menu', icon: 'pi pi-fw pi-home', routerLink: ['/'], items: [
                     { label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
                     { label: 'Produtos', icon: 'pi pi-list', items: [
-                        { label: 'Lista de Produtos', icon: 'pi pi-list', routerLink: ['/produto/produtos'] }
+                        { label: 'Listar Produtos', icon: 'pi pi-list', routerLink: ['/produto/produtos'] }
                     ]},
-                    { label: 'Usuario', icon: 'pi pi-list', items: [
-                        { label: 'Lista Usuarios', icon: 'pi pi-list', routerLink: ['/usuario/usuarios'] }
+                    {   label: 'Usuario', icon: 'pi pi-list', items: [
+                        { label: 'Listar Usuarios', icon: 'pi pi-list', routerLink: ['/usuario/usuarios'] }
                     ]}
                 ],
             },

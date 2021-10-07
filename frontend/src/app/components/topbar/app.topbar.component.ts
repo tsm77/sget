@@ -34,7 +34,7 @@ export class AppTopbarComponent {
         return this._authentication.isAuthenticated();
     }
     logout() {
-        localStorage.clear()
+        window.localStorage.clear()
         location.reload()
     }
 }

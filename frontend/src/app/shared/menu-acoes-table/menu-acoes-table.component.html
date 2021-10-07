@@ -1,0 +1,11 @@
+<div class="menu-acoes">
+    <ng-container *ngIf="aberto">
+        <a *ngFor="let acao of acoes" [id]="acao.id" [name]="acao.name" [title]="acao.title"
+            (click)="acao.command(data)" [routerLink]="acao.route" class="formatacao-icone-menu-acoes white">
+            <i [class]="acao.icon"></i>
+        </a>
+    </ng-container>
+    <a class="{{aberto ? 'menu-acoes-horizontal' : ''}} formatacao-icone-menu-acoes" (click)="changeMenu()">
+        <i [class]="aberto ? 'pi pi-ellipsis-h' : 'pi pi-ellipsis-v' "> </i>
+    </a>
+</div>

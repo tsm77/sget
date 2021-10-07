@@ -7,11 +7,12 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usuario.component';
 
 
 
 @NgModule({
-  declarations: [FormularioUsuarioComponent, LoginComponent, ListagemUsuarioComponent],
+  declarations: [FormularioUsuarioComponent, LoginComponent, ListagemUsuarioComponent, VisualizarUsuarioComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,

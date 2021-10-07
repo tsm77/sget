@@ -3,8 +3,6 @@ package com.digitailinnovationone.springboot.configuracao;
 import com.digitailinnovationone.springboot.configuracao.jwt.AuthEntryPointJwt;
 import com.digitailinnovationone.springboot.configuracao.jwt.AuthTokenFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,7 +22,6 @@ import org.springframework.stereotype.Component;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Component
-@EnableAutoConfiguration
 @RequiredArgsConstructor
 public class ConfiguracaoSecurity extends WebSecurityConfigurerAdapter {
 
@@ -59,8 +56,8 @@ public class ConfiguracaoSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/usuarios/**").permitAll()
-                .antMatchers("/api/produtos/**").permitAll()
+                .authorizeRequests().antMatchers("/api/produtos/**").permitAll()
+                .antMatchers("/api/usuarios/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class ProdutoDTO {
 
-    private Integer id;
+    private Long id;
 
     @NotNull
     private String nome;

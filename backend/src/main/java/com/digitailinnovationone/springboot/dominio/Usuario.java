@@ -1,21 +1,18 @@
 package com.digitailinnovationone.springboot.dominio;
 
-import com.digitailinnovationone.springboot.servico.enumeration.PermissaoEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table (name = "usuario")
@@ -38,8 +35,8 @@ public class Usuario {
     @Column (name ="email")
     private String email;
 
-    @Column(name = "permissao_usuario")
-    @Enumerated(EnumType.STRING)
-    private PermissaoEnum roles;
+    @Column(name = "admin")
+    private Boolean admin;
+
 
 }

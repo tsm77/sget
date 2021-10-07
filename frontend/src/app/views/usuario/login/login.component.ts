@@ -16,12 +16,14 @@ import { UsuarioService } from '../service/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Output() emitUsuario: EventEmitter<Login> = new EventEmitter
+  @Output() emitUsuario: EventEmitter<Usuario> = new EventEmitter
   login = new Login();
-  formLogin : FormGroup;
+  formLogin: FormGroup;
+  
 
-  constructor(private modalService: ModalService, 
-    private fb : FormBuilder, 
+
+  constructor(private modalService: ModalService,
+    private fb: FormBuilder,
     private usuarioService: UsuarioService,
     private tokenStorage: TokenStorageService,
     private router: Router,
@@ -31,43 +33,49 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.iniciarForm();
+  
+    
   }
 
-  abrirModal(){
-  this.modalService.modalComponente(FormularioUsuarioComponent)
+  abrirModal() {
+    this.modalService.modalComponente(FormularioUsuarioComponent)
   }
 
 
-  iniciarForm(){
+  iniciarForm() {
     this.formLogin = this.fb.group({
       username: ['', [Validators.required]],
       senha: ['', [Validators.required]]
+  
     })
   }
 
-  telaInicial(){
+  telaInicial() {
     this.router.navigate(['']);
-
+    
   }
-  
+
   doLogin() {
     this.onSubmit();
   }
 
+  pegarUsuarioLocal() {
+    const usuario = this.tokenStorage.getUser();
+    this.emitUsuario.emit(usuario);
+  }
+
   onSubmit() {
-    this.usuarioService.login(this.login).subscribe( data => {
+    this.usuarioService.login(this.login).subscribe(
+      data => {
+        this.emitUsuario.emit(data); 
         this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUser(data);
-        this.tokenStorage.getUser();
-        this.emitUsuario.emit(data);      
-        const msg = `Login realizado com sucesso.`;
-        this.alertaService.sucesso(msg);
-        this.telaInicial();  
+        this.tokenStorage.saveUser(data);   
+        this.telaInicial();
+
       },
-      err => {        
-        const msg = `O Usuario ${this.login.username} Não encontrado.`;
+      err => {
+        const msg = `O Usuario ou Senha invalido.`;
         this.alertaService.erro(msg);
-      }
-    );
+      })
   }
 }

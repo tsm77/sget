@@ -4,7 +4,6 @@ import com.digitailinnovationone.springboot.dominio.Usuario;
 import com.digitailinnovationone.springboot.repositorio.UsuarioRepositorio;
 import com.digitailinnovationone.springboot.servico.Exception.RegraNegocioException;
 import com.digitailinnovationone.springboot.servico.dto.UsuarioDTO;
-import com.digitailinnovationone.springboot.servico.enumeration.PermissaoEnum;
 import com.digitailinnovationone.springboot.servico.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,12 +11,12 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class UsuarioServico {
+
 
     private final UsuarioRepositorio repositorio;
 
@@ -40,14 +39,12 @@ public class UsuarioServico {
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.toEntity(usuarioDTO);
         usuario.setSenha(encoder.encode(usuario.getSenha()));
-        usuario.setRoles(PermissaoEnum.USUARIO);
         repositorio.save(usuario);
         return mapper.toDto(usuario);
     }
 
-
     public void editar(UsuarioDTO usuarioDTO) {
-    verificarExistencia(usuarioDTO.getId());
+        verificarExistencia(usuarioDTO.getId());
     }
 
     public void verificarExistencia(Long id) {
@@ -56,9 +53,8 @@ public class UsuarioServico {
         }
     }
 
-
     public void remover(Long id) {
-       verificarExistencia(id);
+        verificarExistencia(id);
         repositorio.deleteById(id);
     }
 }

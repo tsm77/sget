@@ -22,7 +22,7 @@ public class Produto implements Serializable {
     @SequenceGenerator(name = "sq_produto", allocationSize = 1, sequenceName = "sq_produto", initialValue = 1)
 
     @Column (name = "id")
-    private Integer id;
+    private Long id;
 
     @Column (name = "nome")
     private String nome;
