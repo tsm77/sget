@@ -17,6 +17,25 @@ export class RequestUtil {
     
       return params;
     }
+
+    static getRequestParamsTableMultiSort = (datatable: Table): HttpParams => {
+      let params: HttpParams = new HttpParams();
+      if (datatable == null) {
+          return params;
+      }
+
+      params = params.append('page', Math.round(datatable.first / datatable.rows).toString());
+      params = params.append('size', datatable.rows == null ? null : datatable.rows.toString());
+
+      const multiSort = datatable?.multiSortMeta;
+      multiSort?.forEach(sort => {
+          const direction = sort.order === 1 ? 'ASC' : 'DESC';
+          params = params.append('sort', sort.field == null ? '' : sort.field + ',' + direction)
+      });
+
+      return params;
+  }
+
     
   }
 

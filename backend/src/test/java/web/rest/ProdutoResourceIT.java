@@ -1,6 +1,9 @@
 package web.rest;
 
 import builder.ProdutoBuilder;
+import com.digitailinnovationone.springboot.SpringbootApplication;
+import com.digitailinnovationone.springboot.recurso.ProdutoRecurso;
+import com.digitailinnovationone.springboot.repositorio.ProdutoRepositorio;
 import com.digitailinnovationone.springboot.servico.dto.ProdutoDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import util.AbstractTestIT;
 import util.IntTestComum;
@@ -19,9 +24,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@ExtendWith(SpringExtension.class)
-@Transactional
-public class ProdutoResourceIT extends AbstractTestIT {
+@SpringBootTest(classes = SpringbootApplication.class)
+@WebAppConfiguration()
+public class ProdutoResourceIT extends AbstractTestIT<ProdutoRecurso> {
 
     private static final String API_PRODUTOS = "/api/produtos";
     private static final String BUSCAR_PRODUTO = "/api/produtos" + "/{id}";

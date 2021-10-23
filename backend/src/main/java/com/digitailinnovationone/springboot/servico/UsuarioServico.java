@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -37,6 +38,7 @@ public class UsuarioServico {
     }
 
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
+        verificarDuplicidade(usuarioDTO);
         Usuario usuario = mapper.toEntity(usuarioDTO);
         usuario.setSenha(encoder.encode(usuario.getSenha()));
         repositorio.save(usuario);
@@ -50,6 +52,12 @@ public class UsuarioServico {
     public void verificarExistencia(Long id) {
         if (!repositorio.existsById(id)) {
             throw new RegraNegocioException("Usuario não encontrado.");
+        }
+    }
+
+    public void verificarDuplicidade(UsuarioDTO usuarioDTO) {
+        if (Objects.nonNull(this.repositorio.findByNome(usuarioDTO.getNome()))) {
+            throw new RegraNegocioException("Usuario já cadastrado");
         }
     }
 

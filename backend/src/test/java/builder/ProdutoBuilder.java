@@ -15,7 +15,6 @@ import java.util.Collection;
 @Component
 public class ProdutoBuilder extends ConstrutorDeEntidade<Produto> {
 
-
     @Autowired
     private ProdutoMapper mapper;
 
